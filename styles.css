@@ -1,4 +1,6 @@
 /* ملف styles.css */
+
+/* إعدادات أساسية للجسم */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212; /* اللون الأسود */
@@ -12,6 +14,7 @@ body {
     transition: background-color 0.5s ease;
 }
 
+/* إعدادات الحاوية */
 .container {
     text-align: center;
     background-color: #333; /* اللون الرصاصي */
@@ -22,6 +25,7 @@ body {
     width: 100%;
 }
 
+/* تنسيق الرسالة الترحيبية */
 h1 {
     font-size: 18px;
     margin-bottom: 20px;
@@ -30,6 +34,7 @@ h1 {
     transition: opacity 0.5s ease;
 }
 
+/* تنسيق مدخل النص */
 input[type="text"] {
     width: 80%;
     padding: 10px;
@@ -46,6 +51,7 @@ input[type="text"]:focus {
     border-color: #00aaff;
 }
 
+/* تنسيق زر الإرسال */
 button {
     padding: 10px 20px;
     background-color: #00aaff;
@@ -61,12 +67,14 @@ button:hover {
     background-color: #007acc;
 }
 
+/* تنسيق مؤشر التحميل */
 #loadingIndicator {
     color: #ffcc00;
     font-size: 16px;
     margin-top: 10px;
 }
 
+/* رسالة الشكر */
 #responseMessage {
     margin-top: 20px;
     font-size: 18px;
@@ -76,10 +84,65 @@ button:hover {
     transition: opacity 0.5s ease;
 }
 
+/* إضافة تأثيرات التغيير في الخلفية */
 .container.changeBackground {
     background-color: #007acc; /* تغيير الخلفية بعد الإرسال */
 }
 
 .container h1 {
-    opacity: 1; /* إبقاء رسالة الترحيب ظاهرة حتى الإرسال */
+    opacity: 1;
+}
+
+/* Media Queries للأجهزة الصغيرة (الهواتف) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    input[type="text"] {
+        width: 90%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #responseMessage {
+        font-size: 16px;
+    }
+}
+
+/* Media Queries للأجهزة الصغيرة جدًا (مثل الهواتف الذكية) */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 14px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #responseMessage {
+        font-size: 14px;
+    }
 }
