@@ -3,68 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إدخال الاسم مرة واحدة</title>
+    <title>تسجيل الحضور - كلية هندسة الذكاء الاصطناعي</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>أهلاً بك في حفلة تعارف جامعة المعقل كلية هندسة الذكاء الاصطناعي</h1>
-        <p>معك ممثل الشعبة: أحمد سالم</p>
-
-        <h3>أدخل اسمك لتسجيل حضورك</h3>
+        <h1>مرحبًا بكم في حفلة تعارف كلية هندسة الذكاء الاصطناعي</h1>
+        <p id="representative">معك ممثل الشعبة: أحمد سالم</p>
+        <h3 id="instruction">أدخل اسمك لتسجيل حضورك</h3>
 
         <form id="nameForm" method="POST" action="https://formspree.io/f/xrbbobwz">
             <input type="text" id="nameInput" name="userName" placeholder="أدخل اسمك" required>
             <button type="submit">إرسال</button>
         </form>
 
-        <!-- رسالة تأكيد -->
         <p id="message"></p>
-
-        <!-- تاريخ ووقت تقديم النموذج -->
         <p id="dateTime"></p>
     </div>
 
     <script src="script.js"></script>
-
-    <script>
-        // التعامل مع تقديم النموذج
-        const form = document.getElementById("nameForm");
-        const message = document.getElementById("message");
-        const dateTime = document.getElementById("dateTime");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();  // منع إرسال النموذج مباشرة
-
-            // إرسال النموذج إلى Formspree عبر Ajax
-            const formData = new FormData(form);
-
-            fetch(form.action, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    message.textContent = "تم إرسال اسمك بنجاح!";
-                    message.style.color = "green";
-                } else {
-                    message.textContent = "حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.";
-                    message.style.color = "red";
-                }
-            })
-            .catch(() => {
-                message.textContent = "حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.";
-                message.style.color = "red";
-            });
-
-            // إضافة التاريخ والوقت بعد إرسال النموذج
-            const now = new Date();
-            const date = now.toLocaleDateString('ar-EG');
-            const time = now.toLocaleTimeString('ar-EG');
-            dateTime.textContent = `تم إرسال النموذج في: ${date} الساعة ${time}`;
-        });
-    </script>
-
 </body>
 </html>
