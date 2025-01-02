@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حفلة تعارف</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- الرسالة الترحيبية التي تظهر فوق مربع الإدخال -->
+        <h1 id="welcomeMessage">اهلا بك في حفلة تعارف جامعة المعقل لقسم هندسة الذكاء الاصطناعي ممثل القسم احمد سالم</h1>
+
+        <!-- النموذج الذي سيتم من خلاله إرسال البيانات عبر Formspree -->
+        <form action="https://formspree.io/f/xrbbobwz" method="POST" id="nameForm">
+            <input type="text" name="name" id="nameInput" placeholder="ادخل اسمك" oninput="validateInput()" required>
+            <button type="submit" id="submitButton">إرسال</button>
+            <div id="loadingIndicator" style="display: none;">جاري الإرسال...</div>
+        </form>
+
+        <p id="responseMessage"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
