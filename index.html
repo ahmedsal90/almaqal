@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حفلة تعارف</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>إدخال الاسم مرة واحدة</title>
 </head>
 <body>
-    <div class="container">
-        <h1 id="welcomeMessage">اهلا بك في حفلة تعارف جامعة المعقل لقسم هندسة الذكاء الاصطناعي ممثل القسم احمد سالم</h1>
-        <form action="https://formspree.io/f/xrbbobwz" method="POST" id="nameForm">
-            <input type="text" name="name" id="nameInput" placeholder="ادخل اسمك" oninput="validateInput()" required>
-            <button type="submit" id="submitButton">إرسال</button>
-            <div id="loadingIndicator" style="display: none;">جاري الإرسال...</div>
-        </form>
-        <p id="responseMessage"></p>
-    </div>
-    <script src="script.js"></script>
+    <h2>أدخل اسمك:</h2>
+    <form id="nameForm">
+        <input type="text" id="nameInput" placeholder="أدخل اسمك" required>
+        <button type="submit">إرسال</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        // التحقق إذا كان الاسم موجودًا بالفعل في localStorage
+        if (localStorage.getItem('userName')) {
+            document.getElementById('message').textContent = "لقد قمت بإدخال اسمك بالفعل!";
+            document.getElementById('nameForm').style.display = 'none'; // إخفاء النموذج
+        }
+
+        // التعامل مع إرسال النموذج
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع إرسال النموذج بشكل تقليدي
+            let name = document.getElementById('nameInput').value.trim();
+            let messageElement = document.getElementById('message');
+
+            if (!name) {
+                messageElement.textContent = "من فضلك أدخل اسمًا صالحًا.";
+                messageElement.style.color = 'red';
+            } else {
+                // حفظ الاسم في localStorage
+                localStorage.setItem('userName', name);
+                messageElement.textContent = "تم إدخال الاسم بنجاح!";
+                messageElement.style.color = 'green';
+                document.getElementById('nameForm').style.display = 'none'; // إخفاء النموذج
+            }
+        });
+    </script>
 </body>
 </html>
