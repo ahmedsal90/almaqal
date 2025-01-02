@@ -1,148 +1,106 @@
-/* ملف styles.css */
+/* تعريف الخطوط العامة للموقع */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Ubuntu:wght@300;500&display=swap');
 
-/* إعدادات أساسية للجسم */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212; /* اللون الأسود */
-    color: #f2f2f2; /* اللون الفاتح */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* خلفية الصفحة */
+body {
+    background: linear-gradient(45deg, #2b2b2b, #555);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    transition: background-color 0.5s ease;
+    padding: 20px;
 }
 
-/* إعدادات الحاوية */
+/* تنسيق العنصر الرئيسي للمحتوى */
 .container {
     text-align: center;
-    background-color: #333; /* اللون الرصاصي */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
+    background-color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
 }
 
-/* تنسيق الرسالة الترحيبية */
 h1 {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 2.8rem;
     color: #fff;
-    line-height: 1.5;
-    transition: opacity 0.5s ease;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
-/* تنسيق مدخل النص */
+p {
+    font-size: 1.2rem;
+    color: #bbb;
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #4CAF50; /* لون مميز */
+}
+
+/* تصميم حقل الإدخال */
 input[type="text"] {
     width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #f2f2f2;
-    border-radius: 5px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    border: 2px solid #4CAF50;
+    border-radius: 30px;
     background-color: #222;
     color: #fff;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
+/* تأثير عند التركيز على حقل الإدخال */
 input[type="text"]:focus {
-    border-color: #00aaff;
+    border-color: #76d32e;
+    outline: none;
 }
 
-/* تنسيق زر الإرسال */
+/* تصميم الزر */
 button {
-    padding: 10px 20px;
-    background-color: #00aaff;
-    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    background-color: #4CAF50;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 30px;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #007acc;
+    background-color: #76d32e;
 }
 
-/* تنسيق مؤشر التحميل */
-#loadingIndicator {
-    color: #ffcc00;
-    font-size: 16px;
-    margin-top: 10px;
-}
-
-/* رسالة الشكر */
-#responseMessage {
-    margin-top: 20px;
-    font-size: 18px;
+/* تنسيق الرسائل */
+p#message {
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #00aaff;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    color: #4CAF50;
+    margin-top: 20px;
 }
 
-/* إضافة تأثيرات التغيير في الخلفية */
-.container.changeBackground {
-    background-color: #007acc; /* تغيير الخلفية بعد الإرسال */
+/* إخفاء النموذج بعد الإدخال */
+#nameForm {
+    display: block;
 }
 
-.container h1 {
-    opacity: 1;
-}
-
-/* Media Queries للأجهزة الصغيرة (الهواتف) */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        max-width: 90%;
-    }
-
-    h1 {
-        font-size: 16px;
-    }
-
-    input[type="text"] {
-        width: 90%;
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    #responseMessage {
-        font-size: 16px;
-    }
-}
-
-/* Media Queries للأجهزة الصغيرة جدًا (مثل الهواتف الذكية) */
-@media (max-width: 480px) {
-    .container {
-        max-width: 95%;
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 14px;
-    }
-
-    input[type="text"] {
-        width: 100%;
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    #responseMessage {
-        font-size: 14px;
-    }
+/* تحسين التنسيق للرسائل */
+#dateTime {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 15px;
 }

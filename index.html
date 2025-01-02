@@ -4,39 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدخال الاسم مرة واحدة</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>أدخل اسمك:</h2>
-    <form id="nameForm">
-        <input type="text" id="nameInput" placeholder="أدخل اسمك" required>
-        <button type="submit">إرسال</button>
-    </form>
-    <p id="message"></p>
 
-    <script>
-        // التحقق إذا كان الاسم موجودًا بالفعل في localStorage
-        if (localStorage.getItem('userName')) {
-            document.getElementById('message').textContent = "لقد قمت بإدخال اسمك بالفعل!";
-            document.getElementById('nameForm').style.display = 'none'; // إخفاء النموذج
-        }
+    <div class="container">
+        <h1>أهلاً بك في حلفة تعارف جامعة المعقل كلية هندسة الذكاء الاصطناعي</h1>
+        <p>معك ممثل الشعبة: أحمد سالم</p>
 
-        // التعامل مع إرسال النموذج
-        document.getElementById('nameForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // منع إرسال النموذج بشكل تقليدي
-            let name = document.getElementById('nameInput').value.trim();
-            let messageElement = document.getElementById('message');
+        <h3>أدخل اسمك لتسجيل حضورك</h3>
 
-            if (!name) {
-                messageElement.textContent = "من فضلك أدخل اسمًا صالحًا.";
-                messageElement.style.color = 'red';
-            } else {
-                // حفظ الاسم في localStorage
-                localStorage.setItem('userName', name);
-                messageElement.textContent = "تم إدخال الاسم بنجاح!";
-                messageElement.style.color = 'green';
-                document.getElementById('nameForm').style.display = 'none'; // إخفاء النموذج
-            }
-        });
-    </script>
+        <form id="nameForm" method="POST" action="https://formspree.io/f/xrbbobwz">
+            <input type="text" id="nameInput" name="userName" placeholder="أدخل اسمك" required>
+            <button type="submit">إرسال</button>
+        </form>
+
+        <p id="message"></p>
+        <p id="dateTime"></p>
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
