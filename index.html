@@ -19,11 +19,52 @@
             <button type="submit">إرسال</button>
         </form>
 
+        <!-- رسالة تأكيد -->
         <p id="message"></p>
+
+        <!-- تاريخ ووقت تقديم النموذج -->
         <p id="dateTime"></p>
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+        // التعامل مع تقديم النموذج
+        const form = document.getElementById("nameForm");
+        const message = document.getElementById("message");
+        const dateTime = document.getElementById("dateTime");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();  // منع إرسال النموذج مباشرة
+
+            // إرسال النموذج إلى Formspree عبر Ajax
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    message.textContent = "تم إرسال اسمك بنجاح!";
+                    message.style.color = "green";
+                } else {
+                    message.textContent = "حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.";
+                    message.style.color = "red";
+                }
+            })
+            .catch(() => {
+                message.textContent = "حدث خطأ أثناء إرسال البيانات. حاول مرة أخرى.";
+                message.style.color = "red";
+            });
+
+            // إضافة التاريخ والوقت بعد إرسال النموذج
+            const now = new Date();
+            const date = now.toLocaleDateString('ar-EG');
+            const time = now.toLocaleTimeString('ar-EG');
+            dateTime.textContent = `تم إرسال النموذج في: ${date} الساعة ${time}`;
+        });
+    </script>
 
 </body>
 </html>
