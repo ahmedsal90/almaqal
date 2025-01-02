@@ -21,6 +21,18 @@
         <p id="dateTime"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) {
+                event.preventDefault(); // منع الإرسال إذا لم يتم إدخال الاسم
+                document.getElementById('message').textContent = "من فضلك أدخل اسمًا صالحًا.";
+                document.getElementById('message').style.color = 'red';
+            } else {
+                localStorage.setItem('userName', name);
+                localStorage.setItem('userDateTime', new Date().toLocaleString('ar-EG'));
+            }
+        });
+    </script>
 </body>
 </html>
