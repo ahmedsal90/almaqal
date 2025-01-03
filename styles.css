@@ -1,13 +1,14 @@
-/* تعريف الخطوط العامة للموقع */
+/* استيراد الخطوط */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Ubuntu:wght@300;500&display=swap');
 
+/* إعادة ضبط الأنماط الافتراضية */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* خلفية الصفحة */
+/* إعدادات الخلفية */
 body {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.9)),
                 url('https://dail.kakas.app/Images/HLTMSlp9wEk8foVw.jpg');
@@ -23,16 +24,7 @@ body {
     padding: 20px;
 }
 
-/* تغيير لون الخلفية بناءً على الوقت */
-body.morning {
-    background-color: #87CEFA; /* لون الصباح */
-}
-
-body.evening {
-    background-color: #2F4F4F; /* لون المساء */
-}
-
-/* تنسيق العنصر الرئيسي للمحتوى */
+/* الحاوية الرئيسية */
 .container {
     text-align: center;
     max-width: 600px;
@@ -47,7 +39,7 @@ body.evening {
 /* تنسيق العناوين */
 .main-title {
     font-size: 2.8rem;
-    color: #76d32e; /* أخضر أنيق */
+    color: #76d32e;
     margin-bottom: 15px;
     text-transform: uppercase;
     font-weight: bold;
@@ -56,17 +48,17 @@ body.evening {
 .sub-title {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #4CAF50; /* لون فرعي أنيق */
+    color: #4CAF50;
 }
 
-/* تنسيق النصوص */
+/* النصوص */
 p {
     font-size: 1.2rem;
     color: #bbb;
     margin: 10px 0;
 }
 
-/* تصميم حقل الإدخال */
+/* تنسيق حقل الإدخال */
 input[type="text"] {
     width: 80%;
     padding: 15px;
@@ -79,13 +71,12 @@ input[type="text"] {
     transition: all 0.3s ease;
 }
 
-/* تأثير عند التركيز على حقل الإدخال */
 input[type="text"]:focus {
     border-color: #76d32e;
     outline: none;
 }
 
-/* تصميم الزر */
+/* تنسيق الزر */
 button {
     padding: 15px 40px;
     font-size: 1.3rem;
@@ -101,7 +92,7 @@ button:hover {
     background-color: #76d32e;
 }
 
-/* تحسين تصميم شريط التقدم */
+/* شريط التقدم */
 #progressBar {
     width: 100%;
     background-color: #ddd;
@@ -118,23 +109,15 @@ button:hover {
     transition: width 0.5s ease;
 }
 
-/* تصميم قائمة الأسماء */
-#attendeeList {
-    margin-top: 30px;
-    text-align: left;
-    background-color: #444;
-    padding: 15px;
-    border-radius: 10px;
+/* تنسيق الرسائل */
+#message {
+    margin-top: 20px;
+    font-size: 1.3rem;
     color: #fff;
-    display: none; /* إخفاء بشكل افتراضي */
 }
 
-#attendeeList ul {
-    list-style: none;
-    padding: 0;
-}
-
-#attendeeList li {
-    font-size: 1.2rem;
-    padding: 5px 0;
+/* إخفاء التعليمات والنموذج بعد التسجيل */
+#nameForm.hidden,
+#instruction.hidden {
+    display: none;
 }

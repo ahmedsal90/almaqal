@@ -1,36 +1,43 @@
-// التحقق إذا كان الاسم موجودًا بالفعل في localStorage
-if (localStorage.getItem('userName')) {
-    let userName = localStorage.getItem('userName');
-    let messageElement = document.getElementById('message');
-    let dateTimeElement = document.getElementById('dateTime');
-    let instructionElement = document.getElementById('instruction');
+document.addEventListener('DOMContentLoaded', function () {
+    const nameForm = document.getElementById('nameForm');
+    const nameInput = document.getElementById('nameInput');
+    const messageElement = document.getElementById('message');
+    const instructionElement = document.getElementById('instruction');
+    const dateTimeElement = document.getElementById('dateTime');
 
-    messageElement.textContent = `مرحبًا ${userName}! تم تسجيل حضورك بنجاح.`;
-    dateTimeElement.textContent = `تم تسجيل الحضور في: ${localStorage.getItem('userDateTime')}`;
-    document.getElementById('nameForm').style.display = 'none'; // إخفاء النموذج
-    instructionElement.style.display = 'none'; // إخفاء التعليمات
-}
+    // تحقق إذا كان الاسم موجودًا مسبقًا في localStorage
+    const savedName = localStorage.getItem('userName');
+    const savedDateTime = localStorage.getItem('userDateTime');
 
-// التعامل مع إرسال النموذج
-document.getElementById('nameForm').addEventListener('submit', function(event) {
-    let name = document.getElementById('nameInput').value.trim();
-    let messageElement = document.getElementById('message');
-    let dateTimeElement = document.getElementById('dateTime');
-    let instructionElement = document.getElementById('instruction');
+    if (savedName) {
+        // إذا كان الاسم موجودًا
+        messageElement.textContent = `مرحبًا ${savedName}! تم تسجيل حضورك مسبقًا.`;
+        dateTimeElement.textContent = `تم التسجيل في: ${savedDateTime}`;
+        nameForm.style.display = 'none'; // إخفاء النموذج
+        instructionElement.style.display = 'none'; // إخفاء التعليمات
+    }
 
-    if (!name) {
-        event.preventDefault(); // منع الإرسال إذا كان الاسم غير صالح
-        messageElement.textContent = "من فضلك أدخل اسمًا صالحًا.";
-        messageElement.style.color = 'red';
-    } else {
-        // حفظ الاسم ووقت الإدخال في localStorage
-        let currentDateTime = new Date().toLocaleString('ar-EG');
-        localStorage.setItem('userName', name);
+    // التعامل مع إرسال النموذج
+    nameForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+        const userName = nameInput.value.trim();
+        if (!userName) {
+            messageElement.textContent = "من فضلك أدخل اسمًا صالحًا.";
+            messageElement.style.color = 'red';
+            return;
+        }
+
+        // تخزين الاسم وتاريخ التسجيل
+        const currentDateTime = new Date().toLocaleString('ar-EG');
+        localStorage.setItem('userName', userName);
         localStorage.setItem('userDateTime', currentDateTime);
 
-        messageElement.textContent = `شكراً لتسجيل حضورك حضره المهندس/ة ${name}`;
+        // تحديث الرسائل والواجهة
+        messageElement.textContent = `شكراً لتسجيل حضورك، ${userName}!`;
         messageElement.style.color = 'green';
-        dateTimeElement.textContent = `تم تسجيل الحضور في: ${currentDateTime}`;
-    }
+        dateTimeElement.textContent = `تم التسجيل في: ${currentDateTime}`;
+        nameForm.style.display = 'none'; // إخفاء النموذج
+        instructionElement.style.display = 'none'; // إخفاء التعليمات
+    });
 });
-
