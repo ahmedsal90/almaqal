@@ -23,6 +23,15 @@ body {
     padding: 20px;
 }
 
+/* تغيير لون الخلفية بناءً على الوقت */
+body.morning {
+    background-color: #87CEFA; /* لون الصباح */
+}
+
+body.evening {
+    background-color: #2F4F4F; /* لون المساء */
+}
+
 /* تنسيق العنصر الرئيسي للمحتوى */
 .container {
     text-align: center;
@@ -32,25 +41,29 @@ body {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid #76d32e;
 }
 
-h1 {
+/* تنسيق العناوين */
+.main-title {
     font-size: 2.8rem;
-    color: #fff;
+    color: #76d32e; /* أخضر أنيق */
     margin-bottom: 15px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
+.sub-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #4CAF50; /* لون فرعي أنيق */
+}
+
+/* تنسيق النصوص */
 p {
     font-size: 1.2rem;
     color: #bbb;
     margin: 10px 0;
-}
-
-h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #76d32e;
 }
 
 /* تصميم حقل الإدخال */
@@ -88,43 +101,40 @@ button:hover {
     background-color: #76d32e;
 }
 
-/* تنسيق الرسائل */
-p#message {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #4CAF50;
+/* تحسين تصميم شريط التقدم */
+#progressBar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 15px;
     margin-top: 20px;
+    overflow: hidden;
+    height: 20px;
 }
 
-/* إخفاء النموذج بعد الإدخال */
-#nameForm {
-    display: block;
+#progress {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%;
+    transition: width 0.5s ease;
 }
 
-/* تحسين التنسيق للرسائل */
-#dateTime {
+/* تصميم قائمة الأسماء */
+#attendeeList {
+    margin-top: 30px;
+    text-align: left;
+    background-color: #444;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    display: none; /* إخفاء بشكل افتراضي */
+}
+
+#attendeeList ul {
+    list-style: none;
+    padding: 0;
+}
+
+#attendeeList li {
     font-size: 1.2rem;
-    color: #ccc;
-    margin-top: 15px;
-}
-
-/* التوافق مع أحجام الشاشات */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-    p, h3 {
-        font-size: 1rem;
-    }
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-    }
-    button {
-        font-size: 1rem;
-        padding: 10px 20px;
-    }
-    .container {
-        padding: 20px;
-    }
+    padding: 5px 0;
 }

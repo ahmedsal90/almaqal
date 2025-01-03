@@ -8,9 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>مرحبًا بكم في حفلة تعارف كلية هندسة الذكاء الاصطناعي</h1>
+        <h1 class="main-title">مرحبًا بكم في حفلة تعارف كلية هندسة الذكاء الاصطناعي</h1>
+        <p id="eventDescription">هذه فرصة رائعة للتعارف وتكوين علاقات جديدة مع زملائك.</p>
         <p id="representative">معك ممثل الشعبة: أحمد سالم</p>
-        <h3 id="instruction">أدخل اسمك لتسجيل حضورك</h3>
+        <h3 id="instruction" class="sub-title">أدخل اسمك لتسجيل حضورك</h3>
 
         <form id="nameForm" method="POST" action="https://formspree.io/f/xrbbobwz">
             <input type="text" id="nameInput" name="userName" placeholder="أدخل اسمك" required>
@@ -19,20 +20,16 @@
 
         <p id="message"></p>
         <p id="dateTime"></p>
+        <div id="progressBar">
+            <div id="progress"></div>
+        </div>
+
+        <div id="attendeeList">
+            <h3 class="sub-title">الأسماء المسجلة:</h3>
+            <ul id="names"></ul>
+        </div>
     </div>
 
-    <script>
-        document.getElementById('nameForm').addEventListener('submit', function(event) {
-            const name = document.getElementById('nameInput').value.trim();
-            if (!name) {
-                event.preventDefault(); // منع الإرسال إذا لم يتم إدخال الاسم
-                document.getElementById('message').textContent = "من فضلك أدخل اسمًا صالحًا.";
-                document.getElementById('message').style.color = 'red';
-            } else {
-                localStorage.setItem('userName', name);
-                localStorage.setItem('userDateTime', new Date().toLocaleString('ar-EG'));
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
