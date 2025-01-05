@@ -1,25 +1,42 @@
+<!-- في ملف index.html -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الحضور - كلية هندسة الذكاء الاصطناعي</title>
+    <title>موقع الرسائل الجماعية</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="main-title">مرحبًا بكم في حفلة تعارف كلية هندسة الذكاء الاصطناعي</h1>
-        <p id="eventDescription">هذه فرصة رائعة للتعارف وتكوين علاقات جديدة مع زملائك.</p>
-        <p id="representative">معك ممثل الشعبة: أحمد سالم</p>
-        <h3 id="instruction" class="sub-title">أدخل اسمك لتسجيل حضورك</h3>
+        <header>
+            <h1>أهلاً بك في Chat جامعة المعقل</h1>
+        </header>
+        
+        <div class="content">
+            <!-- قسم الملف الشخصي (اليمين) -->
+            <div class="profile-section">
+                <div class="profile-info">
+                    <img id="profileImage" src="default-profile.png" alt="Profile Image" class="profile-img">
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <p id="userName">اسم المستخدم: <span id="displayName">أحمد</span></p>
+                    <input type="text" id="userNameInput" placeholder="أدخل اسم المستخدم" style="display: none;">
+                    <button id="editNameBtn">تعديل الاسم</button>
+                    <button id="saveNameBtn" style="display: none;">حفظ الاسم</button>
+                    <button id="cancelEditBtn" style="display: none;">إلغاء التعديل</button>
+                </div>
+            </div>
 
-        <form id="nameForm">
-            <input type="text" id="nameInput" name="userName" placeholder="أدخل اسمك" required>
-            <button type="submit">إرسال</button>
-        </form>
+            <!-- قسم الرسائل (المنتصف) -->
+            <div class="chat-container">
+                <div class="messages" id="messages">
+                    <!-- الرسائل ستظهر هنا -->
+                </div>
 
-        <p id="message"></p>
-        <p id="dateTime"></p>
+                <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا...">
+                <button id="sendMessageBtn">إرسال</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
